@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tagline:</b>
+  <%= @profile.tagline %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @profile.bio %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @profile.user_id %>
+</p>
+  <div>
+    Skills:
+    <br />
+
+  <%= render @skills %>
+  <br />
+  <%= link_to "Add Skill+", new_skill_path %>
+  </div>
+  <br />
+  <br />
+
+
+<% if can? :manage, @profile %>
+  <%= link_to 'Edit', edit_profile_path(@profile) %> |
+<% end %>
+<%= link_to 'Back', profiles_path %>

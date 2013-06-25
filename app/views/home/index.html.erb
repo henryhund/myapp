@@ -1,4 +1,17 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<% if user_signed_in? %>
+  <h3>Home</h3>
+    <p>You are logged in as: <%= link_to current_user.name, current_user.has_profile? ? profile_path(current_user.profile) : new_profile_path %></p>
+    <p><%= 
+      if current_user.has_profile?
+        link_to "Edit Profile", edit_profile_path(current_user.profile)
+      else
+        link_to "Create Profile", new_profile_path 
+      end 
+    %></p>
+    <p>
+      <%= link_to "User Directory List", profiles_path %>
+    </p>
+
+<% else %>
+  <%= render "layouts/welcome" %>
 <% end %>

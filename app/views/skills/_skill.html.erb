@@ -1,0 +1,6 @@
+<%= link_to skill.name, skill %> 
+<% if can? :manage, skill %>| 
+  <%= link_to 'Edit', edit_skill_path(skill) %> | 
+  <%= link_to 'Delete', skill, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %> 
+<br />

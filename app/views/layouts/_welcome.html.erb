@@ -1,0 +1,13 @@
+<% unless user_signed_in? %>
+    <div class="hero-unit">
+        <h1>Welcome to Lorious!</h1>
+        <p>
+            You've found the home page for the
+            <%= link_to "Lorious", "http://www.lorious.com" %>
+            application.
+        </p>
+        <p>
+            <%= link_to "Sign Up Now!", new_user_registration_path, class: "btn btn-small" %>
+        </p>
+    </div>
+<% end %>
