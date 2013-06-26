@@ -1,0 +1,28 @@
+<%= simple_form_for(@appointment) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <% # f.input :host_id %>
+    <% # f.input :attendee_id %>
+    <br />TO ADD: datetimepicker (through bootstrap?)
+    <br />Sample input format: <%= 1.days.from_now.to_datetime %>
+    <br />
+    <br />
+    <%= f.input :time, as: :string%>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Request Appointment" %>
+  </div>
+
+<% end %>
+
+<!-- Bootstrap Datetimepicker: http://tarruda.github.io/bootstrap-datetimepicker/ -->
+<script type="text/javascript">
+  // $(function() {
+  //   $('#datetimepicker2').datetimepicker({
+  //     language: 'en',
+  //     pick12HourFormat: true
+  //   });
+  // });
+</script>

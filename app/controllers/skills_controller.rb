@@ -41,6 +41,7 @@ class SkillsController < ApplicationController
   # GET /skills/1/edit
   def edit
     # @skill = Skill.find(params[:id])
+    @profile = @skill.user.profile
   end
 
   # POST /skills

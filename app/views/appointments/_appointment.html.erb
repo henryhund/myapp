@@ -1,0 +1,10 @@
+
+Appointment Host: <%= User.find_by_id(appointment.host_id).name %>
+<br />Appointment User: <%= User.find_by_id(appointment.attendee_id).name %> 
+<br />Appointment Time: <%= appointment.time %> 
+<br />Appointment Confirmed: <%= appointment.confirmed %> 
+<br /><% if can? :manage, appointment %>  
+  <%= link_to 'Edit', edit_appointment_path(appointment) %> | 
+  <%= link_to 'Delete', appointment, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %> 
+<hr>

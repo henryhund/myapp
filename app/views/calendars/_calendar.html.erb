@@ -1,0 +1,6 @@
+<%= calendar.info %> 
+<% if can? :manage, calendar %>| 
+  <%= link_to 'Edit', edit_calendar_path(calendar) %> | 
+  <%= link_to 'Delete', calendar, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %> 
+<br />

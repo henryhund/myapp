@@ -2,9 +2,9 @@
 
 <table>
   <tr>
+    <th>User</th>
     <th>Tagline</th>
     <th>Bio</th>
-    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +12,9 @@
 
 <% @profiles.each do |profile| %>
   <tr>
+    <td><%= profile.user.name %></td>
     <td><%= profile.tagline %></td>
     <td><%= profile.bio %></td>
-    <td><%= profile.user_id %></td>
     <td><%= link_to 'Show', profile %></td>
     <% if can? :manage, profile %>
       <td><%= link_to 'Edit', edit_profile_path(profile) %></td>

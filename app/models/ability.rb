@@ -6,8 +6,10 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
 
-    else
+    elsif user.has_role? :user
         can :read, :all
+        
+        can :create, Profile
         can :manage, Profile do |u|
             u.try(:user) == user
         end
@@ -15,6 +17,16 @@ class Ability
         can :create, Skill
         can :manage, Skill do |u|
             u.try(:user) == user
+        end
+
+        can :create, Calendar
+        can :manage, Calendar do |u|
+            u.try(:user) == user
+        end
+
+        can :create, Appointment
+        can :manage, Appointment do |u|
+            u.try(:host_id) == user
         end
     end
 

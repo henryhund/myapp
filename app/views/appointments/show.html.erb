@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Host:</b>
+  <%= @appointment.host_id %>
+</p>
+
+<p>
+  <b>Attendee:</b>
+  <%= @appointment.attendee_id %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @appointment.time %>
+</p>
+
+<p>
+  <b>Confirmed:</b>
+  <%= @appointment.confirmed %>
+</p>
+
+
+<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+<%= link_to 'Back', appointments_path %>

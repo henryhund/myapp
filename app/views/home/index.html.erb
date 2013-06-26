@@ -12,6 +12,11 @@
       <%= link_to "User Directory List", profiles_path %>
     </p>
 
+    <p><b>Appointments:</b>
+      <br />
+      <br />
+      <%= render @appointments %>
+
 <% else %>
   <%= render "layouts/welcome" %>
 <% end %>

@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   include ProfilesHelper
   before_filter :authenticate_user!, except: [:index]
-  # before_filter :get_skills
+  # before_filter :get_skills, :get_calendars
 
   def index
     @profiles = Profile.all
@@ -22,6 +22,8 @@ class ProfilesController < ApplicationController
   def show
     # @profile = Profile.find(params[:id])
     @skills = @profile.skills
+    @calendars = @profile.user.calendar
+    @calendar = @profile.user.calendar
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,8 +46,8 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
-    authorize! :manage, @profile
-    @skills = @profile.skills
+    # authorize! :manage, @profile
+    # @skills = @profile.skills
     # @profile = Profile.find_by_user_id(current_user.id)
   end
 

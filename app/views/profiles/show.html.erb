@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Name:</b>
+  <%= @profile.user.name %>
+</p>
+
+<p>
   <b>Tagline:</b>
   <%= @profile.tagline %>
 </p>
@@ -10,23 +15,41 @@
   <%= @profile.bio %>
 </p>
 
-<p>
-  <b>User:</b>
-  <%= @profile.user_id %>
-</p>
-  <div>
-    Skills:
+  <p>
+    <b>Skills:</b>
     <br />
 
   <%= render @skills %>
   <br />
-  <%= link_to "Add Skill+", new_skill_path %>
-  </div>
+  <% if can? :manage, @profile %>
+    <%= link_to "Add Skill+", new_skill_path %>
+  <% end %>
+  </p>
+  <p>
+    <b>Tags: </b>
+    <%= @profile.tags.map { |k, v| k }.join(", ") %>
   <br />
+
   <br />
+  <b>Calendar Info:</b>
+  <% if @profile.has_calendar? %>
+    <%= render @calendar %>
+  <% end %> 
+<% if can? :manage, @profile %>
+  <% unless @profile.has_calendar? %>
+    <%= link_to 'Add Calendar+', new_calendar_path %> <br />
+  <% end %>
+<% end %>
+
+<br />
+<% unless current_user == @profile.user %>
+<p><%= link_to "Make appointment with #{@profile.user.name}", controller: "appointments", action: "new", user: @profile.user_id %><p>
+<% end %>
+<br />
+
 
 
 <% if can? :manage, @profile %>
   <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <% end %>
-<%= link_to 'Back', profiles_path %>
+<%= link_to 'Back', dashboard_path %>
