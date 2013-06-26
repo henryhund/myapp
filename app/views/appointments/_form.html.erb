@@ -2,8 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <% # f.input :host_id %>
-    <% # f.input :attendee_id %>
+    <%= f.input :host_id, as: :hidden, input_html: { value: @host_id } %>
+    <%= f.input :attendee_id, as: :hidden, input_html: { value: current_user.id }%>
     <br />TO ADD: datetimepicker (through bootstrap?)
     <br />Sample input format: <%= 1.days.from_now.to_datetime %>
     <br />

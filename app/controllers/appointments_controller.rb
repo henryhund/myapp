@@ -31,8 +31,9 @@ class AppointmentsController < ApplicationController
 
     @host_id = params[:user]
     @host = User.find_by_id(@host_id)
-    @appointment.attendee_id = current_user.id
-    @appointment.host_id = @host_id
+    @attendee_id = current_user.id
+    # @appointment.attendee_id = current_user.id
+    # @appointment.host_id = @host_id
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,10 +50,10 @@ class AppointmentsController < ApplicationController
   # POST /appointments.json
   def create
     # @appointment = Appointment.new(params[:appointment])
-    @host_id = params[:host]
-    @host = User.find_by_id(@host_id)
-    @appointment.attendee_id = current_user.id
-    @appointment.host_id = @host_id
+    # @host_id = params[:host]
+    # @host = User.find_by_id(@host_id)
+    # @appointment.attendee_id = current_user.id
+    # @appointment.host_id = @host_id
     @appointment.confirmed = false
     respond_to do |format|
       if @appointment.save
